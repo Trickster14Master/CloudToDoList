@@ -68,7 +68,11 @@ class TaskForGroupAPI(viewsets.ModelViewSet):
     # устанавливаем классы для фильтрации 
     filter_backends = (DjangoFilterBackend, SearchFilter)
     # указываем поле по которому проводить фильтрацию 
-    search_fields = ['Group_id',]
+    search_fields = [
+        "Group__UserToken",
+        "Group__NameGroupTask",
+        "Group__StatusGroupTask"
+        ]
 
     def get_paginated_response(self, data):
        return Response(data)
